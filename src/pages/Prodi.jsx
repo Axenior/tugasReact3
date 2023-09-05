@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import prodi from "../api/prodi.json"
 
 import { useNavigate } from "react-router-dom"
 
@@ -10,9 +11,7 @@ const Prodi = () => {
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
-    const res = await axios.get("https://strapi-rygs.onrender.com/api/prodis");
-    console.log(res.data.data[0].attributes.prodi[0]);
-    setData(res.data.data[0].attributes.prodi[0]);
+    setData(prodi[0])
   }
 
   useEffect(() => {
@@ -46,7 +45,7 @@ const Prodi = () => {
                   <div className='mt-5'>Kelas : {kelas}</div>
 
                   {angkatan.data[kelas].length !== 0 ? (
-                    <table class="w-full md:table-fixed text-left mt-2 border ">
+                    <table className="w-full md:table-fixed text-left mt-2 border ">
                       <thead>
                         <tr className='bg-sky-950'>
                           <th className='p-1'>NPM</th>
@@ -79,8 +78,6 @@ const Prodi = () => {
                       Tidak ada mahasiswa yang mengambil kelas ini.
                     </div>
                   )}
-
-
 
 
                 </div>
